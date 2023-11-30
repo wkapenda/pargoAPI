@@ -28,16 +28,13 @@ namespace server_track_trace.Controllers
     new PackageHistory("PGO1234567", "Delivered", DateTime.Now, "130 , 14TH Avenue, Rooth St, same street as the police station, Alexandra, Johannesburg"),
 
     // Inserting solution for PGO8901234
-    new PackageHistory("PGO8901234", "In transit", DateTime.Now.AddDays(-3), "Shop L48 Cape Gate Shopping Centre, Cnr Okavango and De Bron Road, Brackenfell, Brackenfell"),
+    new PackageHistory("PGO8901234", "In transit", DateTime.Now.AddDays(-5), "Shop L48 Cape Gate Shopping Centre, Cnr Okavango and De Bron Road, Brackenfell, Brackenfell"),
     new PackageHistory("PGO8901234", "Arrived at facility", DateTime.Now.AddDays(-2), "Shop 40 Fairtrees Road, Vredekloof, Brackenfell"),
     new PackageHistory("PGO8901234", "Out for delivery", DateTime.Now.AddDays(-1), "Shop L11B, Glenvista Shopping Centre, Biggarsberg Road, Glenvista, Johannesburg"),
-    new PackageHistory("PGO8901234", "Delivered", DateTime.Now, "Shop 3, Jukskei Meander Shopping Centre, Cnr Robyn and Platina Street, Jukskei Park, Johannesburg"),
 
     // Inserting solution for PGO5678901
     new PackageHistory("PGO5678901", "In transit", DateTime.Now.AddDays(-3), "Shop 6B Northlands Corner Shopping Mall, Corner Witkoppen and New Market Roads, Northriding, Johannesburg"),
     new PackageHistory("PGO5678901", "Arrived at facility", DateTime.Now.AddDays(-2), "Shop 107 Randridge Mall, Cnr John Vorster & Kayburne Avenue, Randburg, Randburg"),
-    new PackageHistory("PGO5678901", "Out for delivery", DateTime.Now.AddDays(-1), "Shop 25B, Ridgeview Shopping Centre, 202 Ouklip Road, Helderkruin, Roodepoort"),
-    new PackageHistory("PGO5678901", "Delivered", DateTime.Now, "Shop 75c Woodlands Boulevard Shopping Complex, cnr Garsfontein Road & De Villebois Mareuil Drive, Pretorius Park, Pretoria"),
 
     // Existing dummy data
 };
@@ -63,11 +60,6 @@ namespace server_track_trace.Controllers
                     })
                     .ToList();
 
-                if (matchingHistory.Count == 0)
-                {
-                    return NotFound($"No package history found for waybill number '{waybillNumber}'.");
-                }
-
                 return Ok(matchingHistory);
             }
             catch (Exception ex)
@@ -76,5 +68,6 @@ namespace server_track_trace.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
     }
 }
